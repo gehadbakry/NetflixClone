@@ -1,23 +1,49 @@
-import React from 'react'
+
+import {  DropdownButton,Dropdown } from 'react-bootstrap';
+import React, { useState } from 'react'
 import "./NavBar.css"
 
 
-const NavBar =()=>{
+
+const NavBar =()=> {
+    // To change the color of the navbar background on scrolling
+    const [isScrolled,setIsScrolled]= useState(false);
+    window.onscroll=()=>{
+        setIsScrolled(window.pageYOffset === 0?false:true);
+        return ()=>{window.onscroll =null}
+    }
+    /////////////////////////////////////////////////////////////////////////
+  //The render of the page
 return(
-    <div className='navbar'>
+    <div className={isScrolled?"navbar scrolled":"navbar"}>
         <div className='container'>
+            {/* Left Side contains Logo and watching options */}
             <div className='left'> 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"/>
+            <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"/>
             <span>Home Page</span>
             <span>Movies</span>
             <span>Series</span>
             <span>New</span>
             </div>
+             {/* right Side contains user options, search and notification */}
             <div className='right'>
-               
+            <i className="glyphicon glyphicon-search icon"></i>
+            <span>KID</span>
+            <i className="glyphicon glyphicon-bell icon"></i>
+            <img
+            className="UserImage"
+            src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+          />
+          <DropdownButton  id="dropdown-button-example1 icon" variant="secondary" title="" >
+            <Dropdown.Item >Settings</Dropdown.Item>
+            <Dropdown.Item >LogOut</Dropdown.Item>
+            </DropdownButton>
+           
             </div>
         </div>
     </div>
 )
 }
+
 export default NavBar;
