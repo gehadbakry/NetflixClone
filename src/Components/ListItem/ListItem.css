@@ -1,5 +1,5 @@
-.listItem{
-    width:225px;
+.listItem {
+    width: 225px;
     height: 120px;
     background-color: var(--main-color);
     margin-right: 5px;
@@ -25,9 +25,9 @@
 .listItem:hover {
     width: 325px;
     height: 300px;
-    box-shadow: -2px 2px 7px 4px rgba(77,70,70,0.35);
-    -webkit-box-shadow: -2px 2px 7px 4px rgba(77,70,70,0.35);
-    -moz-box-shadow: -2px 2px 7px 4px rgba(77,70,70,0.35);
+    box-shadow: -2px 2px 7px 4px rgba(77, 70, 70, 0.35);
+    -webkit-box-shadow: -2px 2px 7px 4px rgba(77, 70, 70, 0.35);
+    -moz-box-shadow: -2px 2px 7px 4px rgba(77, 70, 70, 0.35);
     position: absolute;
     top: -150px;
     border-radius: 5px;
