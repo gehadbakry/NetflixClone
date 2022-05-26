@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './Register.css';
 
 function Register() {
@@ -13,7 +13,7 @@ function Register() {
         setEmail(emailRef.current.value)
     }
     const handleFinish=()=>{
-        setEmail(passwordRef.current.value)
+        setPassword(passwordRef.current.value)
     }
     return ( 
         <div className="register">
@@ -26,7 +26,7 @@ function Register() {
                     <button className="loginButton">Sign In</button>
                 </div>
             </div>
-            <div className="container">
+            <div className="Container">
                 <h1>Unlimited movies, TV shows, and more.</h1>
                 <h2>Watch anywhere. Cancel anytime.</h2>
                 <p>
@@ -38,7 +38,7 @@ function Register() {
                     <button className="registerButton" onClick={handleStart}>Get Started</button>
                 </div>
                 ):( <form className="input">
-                         <input type="passsword" placeholder="password" ref={passwordRef} />
+                         <input type="password" placeholder="password" ref={passwordRef} />
                         <button className="registerButton" onClick={handleFinish}>
                             Start </button>
                     </form>)}
