@@ -2,6 +2,7 @@
 import {  DropdownButton,Dropdown } from 'react-bootstrap';
 import React, { useState } from 'react'
 import "./NavBar.css"
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -20,9 +21,15 @@ return(
             {/* Left Side contains Logo and watching options */}
             <div className='left'> 
             <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" alt=''/>
+            <NavLink to="/" className="link">
             <span>Home Page</span>
+            </NavLink>
+            <NavLink to="/movies" className="link">
             <span>Movies</span>
+            </NavLink>
+            <NavLink to="/Series" className="link">
             <span>Series</span>
+            </NavLink>
             <span>New</span>
             </div>
              {/* right Side contains user options, search and notification */}

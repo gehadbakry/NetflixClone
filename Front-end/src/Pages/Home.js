@@ -5,11 +5,11 @@ import Featued from '../Components/Featured/Featured'
 import  List from '../Components/List/List'
 
 
-const Home =()=>{
+const Home =({type})=>{
 return(
     <div className='home'>
         <NavBar/>
-       <Featued />
+       <Featued type={type}/>
        <List/>
        <List/>
        <List/>

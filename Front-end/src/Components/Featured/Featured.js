@@ -8,7 +8,7 @@ const Featued = ({type})=>{
         <div className="featued"> 
         {type && (
         <div className="category">
-          <span>{type === "movie" ? "Movies" : "Series"}</span>
+          <span>{type === "movies" ? "Movies" : "Series"}</span>
 
           {/* Genre list picked according to the page you are in */}
 
