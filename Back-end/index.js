@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const authRoute = require("./Routes/Auth");
+const userRoute = require("./Routes/users");
 const movieRoute = require("./Routes/movies");
 
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/movies",movieRoute);
+app.use("/api/users",userRoute);
 
 app.listen(8800,()=>{
     console.log("listening to port 8800")
