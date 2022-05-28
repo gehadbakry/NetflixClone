@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
@@ -17,9 +18,20 @@ mongoose.connect(process.env.MONGO_URL,{
 .then(()=>{console.log("Connected success")})
 .catch(err=>console.log(err));
 
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+ }
+ app.use(cors(corsOptions))
+
+ async function main() {
+    await mongoose.connect(process.env.MONGO_URL);
+  }
+
 app.use(express.json());
 
-app.use("/api/auth", authRoute);
+app.use("/api/auth", authRoute );
 app.use("/api/movies",movieRoute);
 app.use("/api/users",userRoute);
 
