@@ -1,43 +1,67 @@
 import "./ListItem.css"
 import { PlayFill,Plus,HandThumbsUp,HandThumbsDown } from "react-bootstrap-icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import video from '../../Marvel.mp4'
+import axios from "axios"
+import { Link } from "react-router-dom"
 
-export default function ListItem({index}){
+export default function ListItem({index,item}){
 
     const [isHovered,setIsHovered] =useState(false)
+    const [movie,setMovie] =useState({})
    // const trailer = "../";
+    useEffect(() => {
+        const getMovie = async()=>{
+            try{
+                const res=await axios.get("/movies/find/"+item,{
+                    headers: {
+                      token:
+                      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTI3ZGM4MmY3YWUwYjJiZmM0MjJhMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1MzkzMDMzMSwiZXhwIjoxNjU0MzYyMzMxfQ.XwGtpS_W60UxfBXgXSe-kFJmMlC2_WQqyEXh5_rr3qc",
+                    },
+                  }
+                )
+                setMovie(res.data);
+            }catch(err){
+                console.log(err)
+            }
 
+        };
+        getMovie()
+    },[item]);
     return(
-        <div className="listItem" 
-        style={{left:isHovered && index *225 -50 +index *2.5}}
-        onMouseEnter={()=>setIsHovered(true)} 
-        onMouseLeave={()=>setIsHovered(false)}>
-            <img className="Videoimg" src="https://images.thedirect.com/media/article_full/marvel-netflix-movies.jpg" alt=''/>
+        <Link to={{pathname: "/watch",movie:movie}}>
+            <div className="listItem" 
+            style={{left:isHovered && index *225 -50 +index *2.5}}
+            onMouseEnter={()=>setIsHovered(true)} 
+            onMouseLeave={()=>setIsHovered(false)}>
+                <img className="Videoimg" 
+                src={movie.img} 
+                alt=''/>
 
-            {isHovered && (
-                <>
-                    <video className="VideoHome" src={video} autoPlay={true} loop/>
-                    <div className=" itemInfo">
-                        <div className="icons">
-                            <PlayFill className="videoIcon"/>
-                            <Plus className="videoIcon"/>
-                            <HandThumbsUp className="videoIcon"/>
-                            <HandThumbsDown className="videoIcon"/>
+                {isHovered && (
+                    <>
+                        <video className="VideoHome" src={movie.trailer} autoPlay={true} loop/>
+                        <div className=" itemInfo">
+                            <div className="icons">
+                                <PlayFill className="videoIcon"/>
+                                <Plus className="videoIcon"/>
+                                <HandThumbsUp className="videoIcon"/>
+                                <HandThumbsDown className="videoIcon"/>
+                            </div>
+                            <div className="itemInfoTop d-flex text-align-center">
+                                <span>{movie.duration}</span>
+                                <span className="limit">+{movie.limit}</span>
+                                <span>{movie.year}</span>
+                            </div>
+                            <div className="desc">
+                                {movie.desc}
+                            </div>
+                            <div className="category">{movie.genre}</div>
                         </div>
-                        <div className="itemInfoTop d-flex text-align-center">
-                            <span>1 hour 30 mins</span>
-                            <span className="limit">+16</span>
-                            <span>2007</span>
-                        </div>
-                        <div className="desc">
-                        American media franchise and shared universe centered on a series of superhero films produced by Marvel Studios.
-                        </div>
-                        <div className="category">Action</div>
-                    </div>
-                </>
-            )}
-        </div>
+                    </>
+                )}
+            </div>
 
+       </Link>
     )
 }

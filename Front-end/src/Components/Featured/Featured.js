@@ -1,9 +1,28 @@
 import "./Featured.css"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { InfoCircle,PlayCircleFill } from 'react-bootstrap-icons'
 import {  DropdownButton,Dropdown } from 'react-bootstrap';
+import axios from "axios";
 
 const Featued = ({type})=>{
+    const [content,setContent] = useState({});
+    useEffect(()=>{
+        const getRandomContent=async()=>{
+          try{
+              const res= await axios.get(`/movies/random?type=${type}`, {
+                headers: {
+                  token:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTI3ZGM4MmY3YWUwYjJiZmM0MjJhMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1MzkzMDMzMSwiZXhwIjoxNjU0MzYyMzMxfQ.XwGtpS_W60UxfBXgXSe-kFJmMlC2_WQqyEXh5_rr3qc",
+                },
+              })
+              setContent(res.data[0]);
+          }
+          catch(err){
+            console.log(err)
+          }
+        }
+        getRandomContent();
+    },[type])
     return(
         <div className="featued"> 
         {type && (
@@ -36,41 +55,43 @@ const Featued = ({type})=>{
 
             {/*Feature back ground "Afesh el film"  */}
 
-            <img  src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            />
+            {/* <img  src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" */}
+            {/* /> */}
+            <img 
+            src={content.img}
+            alt=""/>
 
-        <div className="info">
+            <div className="info">
+ 
+              {/*information image "Esm el film"  */}
 
-             {/*information image "Esm el film"  */}
-
-        <img
-          src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
-          alt=""
-        />
-        <span className="Discription">
-        orem Ipsum is simply dummy text
-         of the printing and typesetting industry. 
-         Lorem Ipsum has been the industry's standard 
-         dummy text ever since the 1500s, when an unknown
-          printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-         PageMaker including versions of Lorem Ipsum.
-        </span>
+              {/* <img
+                src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
+                alt=""
+              /> */}
+              <img 
+               src={content.imgTitle}
+                alt=""/>
+ 
+              <span className="Discription">
+              {content.desc}
+              </span>
 
 
-        {/* Controlling your movie  */}
+              {/* Controlling your movie  */}
 
-        <div className="Buttons">
-            <button className="play">
-            <PlayCircleFill/>
-           
-            <span>Play</span>
-            </button>
-            <button className="more">
-            <InfoCircle/>
-            <span>More</span>
-            </button>
-        </div>
-        </div>
+              <div className="Buttons">
+                <button className="play">
+                <PlayCircleFill/>
+              
+                <span>Play</span>
+                </button>
+                <button className="more">
+                <InfoCircle/>
+                <span>More</span>
+                </button>
+              </div>
+            </div>
         </div>
            
         
