@@ -1,32 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './Home.css'
 import NavBar from '../Components/NavBar/NavBar'
 import Featued from '../Components/Featured/Featured'
 import  List from '../Components/List/List'
-import axios from "axios"  
+
 
 const Home =({type})=>{
-    const[lists,setLists]=useState([]);
-    const[genre,setGenre]=useState(null);
-    useEffect(()=>{
-        const getRandomLists=async ()=>{
-            try{
-                const res= await 
-                axios.get(`lists${type ? "?type"+type: ""}
-                &${genre? "&genre=" +genre : ""}`,{
-                    // headers:{
-                    //     token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTI3ZGM4MmY3YWUwYjJiZmM0MjJhMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Mzg3MTg0NCwiZXhwIjoxNjU0MzAzODQ0fQ.doS0Hd2K1ZBGFoVi3_OkNlLBB5THmVstaautMFKw0f4"
-                    // }
-                });
-                console.log(res)
-                // setLists(res.data);
-            }
-            catch(err){
-                console.log(err)
-            }
-        };
-        getRandomLists();
-    },[type,genre]);
 return(
     <div className='home'>
         <NavBar/>
