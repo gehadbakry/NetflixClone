@@ -88,7 +88,7 @@ else{
 })
 
 //Get a movie by id
-router.get("/:id",async(req,res)=>{
+router.get("/find/:id",async(req,res)=>{
     try{
 
         const movie =await Movie.findById(req.params.id); 

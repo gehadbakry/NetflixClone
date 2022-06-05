@@ -1,103 +1,65 @@
+
 const router = require("express").Router();
-const verify = require("../VerfiyToken") ;
 const List = require("../Models/List");
+const verify = require("../VerfiyToken") ;
 
-//Create new movie
-router.post("/",verify, async (req, res)=>{
-    if(req.user.isAdmin){
+//CREATE
 
-        const newList = new List({
-        title: req.body.title,
-        desc: req.body.desc,
-        img:req.body.img,
-        imgTitle:req.body.imgTitle,
-        imgSm:req.body.imgSm,
-        trailer:req.body.trailer,
-        year:req.body.year,
-        limit:req.body.limit,
-        genre:req.body.genre,
-        video: req.body.video,
-    })
-    
+router.post("/", verify, async (req, res) => {
+  if (req.user.isAdmin) {
+    const newList = new List(req.body);
     try {
-           const savedList= await newList.save();
-            res.status(201).json(savedList); 
+      const savedList = await newList.save();
+      res.status(201).json(savedList);
+    } catch (err) {
+      res.status(500).json(err);
     }
-    catch (error) {
-        res.status(500).json(error);
-    }
-}
-else{
-    res.status(403).json("You are not Authorized");
-} 
-})
+  } else {
+    res.status(403).json("You are not allowed!");
+  }
+});
 
+//DELETE
 
-//Delete
-
-//Create new movie
-router.delete("/:id",verify, async (req, res)=>{
-    if(req.user.isAdmin){
-
-        const newList = new List({
-        title: req.body.title,
-        desc: req.body.desc,
-        img:req.body.img,
-        imgTitle:req.body.imgTitle,
-        imgSm:req.body.imgSm,
-        trailer:req.body.trailer,
-        year:req.body.year,
-        limit:req.body.limit,
-        genre:req.body.genre,
-        video: req.body.video,
-    })
-    
+router.delete("/:id", verify, async (req, res) => {
+  if (req.user.isAdmin) {
     try {
-           await List.findByIdAndDelete(req.params.id);
-            res.status(201).json("The list has been deleted!"); 
+      await List.findByIdAndDelete(req.params.id);
+      res.status(201).json("The list has been delete...");
+    } catch (err) {
+      res.status(500).json(err);
     }
-    catch (error) {
-        res.status(500).json(error);
+  } else {
+    res.status(403).json("You are not allowed!");
+  }
+});
+
+//GET
+
+router.get("/", verify, async (req, res) => {
+  const typeQuery = req.query.type;
+  const genreQuery = req.query.genre;
+  let list = [];
+  try {
+    if (typeQuery) {
+      if (genreQuery) {
+        list = await List.aggregate([
+          { $sample: { size: 10 } },
+          { $match: { type: typeQuery, genre: genreQuery } },
+        ]);
+      } else {
+        list = await List.aggregate([
+          { $sample: { size: 10 } },
+          { $match: { type: typeQuery } },
+        ]);
+      }
+    } else {
+      list = await List.aggregate([{ $sample: { size: 10 } }]);
     }
-}
-else{
-    res.status(403).json("You are not an admin");
-} 
-})
+    res.status(200).json(list);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-
-
-
-//Get
-router.get("/",verify,async(req,res)=>{
-    const typeQuery = req.query.type;
-    const genereQuery = req.query.genre;
-    let list =[];
-
-    try{
-        if(typeQuery){
-            if(genereQuery){
-                list = await List.aggregate([
-                    {$sample:{size:10}},
-                    {$match:{type:typeQuery,genre:genereQuery}}
-                ])
-        }
-        else{
-            list = await List.aggregate([
-                {$sample:{size:10}},
-                {$match:{type:typeQuery}}
-            ])
-        }
-    }
-        else{
-            list = await List.aggregate([{$sample:{size:10}}])
-        }
-        res.status(200).json(list);
-    }catch(err){
-        res.status(500).json(err)
-    }
-})
-
-
-
-module.exports=router;
+module.exports = router;
