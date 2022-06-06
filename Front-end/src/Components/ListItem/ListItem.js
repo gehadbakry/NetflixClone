@@ -13,6 +13,7 @@ export default function ListItem({index,item}){
     useEffect(() => {
         const getMovie = async()=>{
             try{
+                console.log({item})
                 const res=await axios.get("/movies/find/"+item,{
                     headers: {
                       token:
@@ -21,13 +22,16 @@ export default function ListItem({index,item}){
                   }
                 )
                 setMovie(res.data);
+               
             }catch(err){
                 console.log(err)
             }
-
+            
         };
         getMovie()
     },[item]);
+   
+
     return(
         <Link to={{pathname: "/watch",movie:movie}}>
             <div className="listItem" 
@@ -49,7 +53,7 @@ export default function ListItem({index,item}){
                                 <HandThumbsDown className="videoIcon"/>
                             </div>
                             <div className="itemInfoTop d-flex text-align-center">
-                                <span>{movie.duration}</span>
+                                {/* <span>{movie.duration}</span> */}
                                 <span className="limit">+{movie.limit}</span>
                                 <span>{movie.year}</span>
                             </div>

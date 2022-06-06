@@ -9,6 +9,10 @@ export default function List({list}){
     const [slideNumber,setSlideNumber] = useState(0);
     const [isMoved,setIsMoved] = useState(false);
 
+
+    // list.content.map((item)=>
+    // console.log(item)
+    // )
     const handleClick =(direction)=>{
 
         setIsMoved(true)
@@ -36,9 +40,13 @@ export default function List({list}){
                         {items.map((item, index) => <li key={index}>{item.name}</li>)}
                     </ul> */}
                     {/* Index which is send ti list item */}
-                        {list.content.map((item,i)=>(
-                            <ListItem index={i} item={item}/>
+                        {list.content.map((item)=>(
+                            
+                            <ListItem key={item} item={item}/>
                         ) )}
+
+    
+
                         {/* <ListItem index={1}/>
                         <ListItem index={2}/>
                         <ListItem index={3}/>

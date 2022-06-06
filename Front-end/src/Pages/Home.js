@@ -36,15 +36,15 @@ const Home =({type})=>{
 return(
     <div className='home'>
         <NavBar/>
-       <Featued type={type}/>
-       {lists.map((list) => (
-        <List list={list} />
+       <Featued type={type} setGenre={setGenre}/>
+       {lists.map((list,i) => (
+        <List key={i} list={list} />
       ))}
        {/* <List/>
        <List/>
        <List/>
        <List/> */}
-
+ 
        {/* <img  src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             /> */}
       

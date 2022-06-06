@@ -4,7 +4,7 @@ import { InfoCircle,PlayCircleFill } from 'react-bootstrap-icons'
 import {  DropdownButton,Dropdown } from 'react-bootstrap';
 import axios from "axios";
 
-const Featued = ({type})=>{
+const Featued = ({type,setGenre})=>{
     const [content,setContent] = useState({});
     useEffect(()=>{
         const getRandomContent=async()=>{
@@ -32,7 +32,7 @@ const Featued = ({type})=>{
           {/* Genre list picked according to the page you are in */}
 
           <DropdownButton id="dropdown-button-dark-example2" variant="secondary" menuVariant="dark"
-          title="Genre" className="mt-2 genre" name="genre">
+          title="Genre" className="mt-2 genre" name="genre" onChange={e=>setGenre(e.target.value)}>
             <Dropdown.Item value="adventure">Adventure</Dropdown.Item>
             <Dropdown.Item value="comedy">Comedy</Dropdown.Item>
             <Dropdown.Item value="crime">Crime</Dropdown.Item>
