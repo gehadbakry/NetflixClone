@@ -10,10 +10,8 @@ import Home from './Pages/Home';
 import Register from './Pages/register/Register';
 import Watch from './Pages/watch/Watch';
 import Login from './Pages/login/Login';
-import Success from './Components/Payment/Success';
 import { useContext } from 'react';
 import { AuthContext } from './Context/AuthContext';
-import Pay from './Components/Payment/Pay';
 
 
 
@@ -37,8 +35,37 @@ function App() {
           )}
       </Routes>
     </Router>
-    //<Pay/>
-      );
+      // <Router>
+      //   <Routes>
+      //     <Route exact path="/" element={user?<Home/>:<Register/>}/>
+      //   </Routes>
+      //   <Routes>
+      //     <Route path="/register" element={!user?<Register/>:<Home/>}/>
+      //   </Routes>
+      //   <Routes>
+      //     <Route path="/login" element={!user?<Login/>:<Home/>}/>
+      //   </Routes>
+      //   {user && (
+      //     <>
+      //     <Routes>
+      //     <Route path="/movies" element={<Home type="movie"/>}/>
+      //   </Routes>
+      //   <Routes>
+      //     <Route path="/Series" element={<Home type="series"/>}/>
+      //   </Routes>
+      //   <Routes>
+      //     <Route path="/watch" element={<Watch/>}/>
+      //   </Routes>
+      //   </>
+      //     )}
+      // // {/* <Watch/> */}
+      // // {/* <Register/> */}
+      // // {/* <Login/> */}
+    
+      // // </Router>
+    
+     
+  );
 }
 
 export default App;
