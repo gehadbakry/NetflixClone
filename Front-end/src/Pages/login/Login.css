@@ -71,6 +71,7 @@
     color: lightgray;
 }
 
-.login form b {
+.login form a {
+    text-decoration: none;
     color: white;
 }

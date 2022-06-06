@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 import { login } from "../../Context/apiCaalls";
+import { NavLink } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -30,7 +31,11 @@ function Login() {
                 <input type="password" placeholder='password' 
                 onChange={(e)=>{setPassword(e.target.value)}}/>
                 <button className="loginButton" onClick={handleLogin}>Sign In</button>
-                <span>New to Netflix? <b>Sign up now.</b></span>
+                    <span>New to Netflix? &nbsp;
+                        <NavLink to="/register">
+                            <b>Sign up now.</b>
+                        </NavLink>
+                     </span> 
                 <small>
                     This page is protected by Google reCAPTCHA to ensure you're not a
                     bot. <b>Learn more</b>.
