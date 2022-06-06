@@ -1,14 +1,18 @@
 
 import {  DropdownButton,Dropdown } from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import "./NavBar.css"
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from "../../Context/AuthContext";
+import { logout } from "../../Context/AuthActions";
 
 
 
 const NavBar =()=> {
     // To change the color of the navbar background on scrolling
     const [isScrolled,setIsScrolled]= useState(false);
+    const { dispatch } = useContext(AuthContext);
+
     window.onscroll=()=>{
         setIsScrolled(window.pageYOffset === 0?false:true);
         return ()=>{window.onscroll =null}
@@ -44,7 +48,7 @@ return(
           />
           <DropdownButton  id="dropdown-button-example1 icon" variant="secondary" title="" >
             <Dropdown.Item >Settings</Dropdown.Item>
-            <Dropdown.Item >LogOut</Dropdown.Item>
+            <Dropdown.Item ><span onClick={() => dispatch(logout())}>Logout</span></Dropdown.Item>
             </DropdownButton>
            
             </div>

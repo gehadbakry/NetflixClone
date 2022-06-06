@@ -12,7 +12,7 @@ const Featued = ({type,setGenre})=>{
               const res= await axios.get(`/movies/random?type=${type}`, {
                 headers: {
                   token:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTI3ZGM4MmY3YWUwYjJiZmM0MjJhMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NDQ1NjM2NywiZXhwIjoxNjU0ODg4MzY3fQ.yd2JZiom9UwnjdPPjaDsMZMO_EuAEBQa4aOUnhcUS8c",
+                  "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
                 },
               })
               setContent(res.data[0]);
