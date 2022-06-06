@@ -60,6 +60,11 @@
     font-size: 20px;
 }
 
+.register .container p a {
+    text-decoration: none;
+    color: white;
+}
+
 .register .container .input {
     width: 50%;
     background-color: white;

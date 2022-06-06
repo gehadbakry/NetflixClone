@@ -9,11 +9,13 @@ export default function ListItem({index,item}){
 
     const [isHovered,setIsHovered] =useState(false)
     const [movie,setMovie] =useState({})
+
+  //  console.log(item)
    // const trailer = "../";
     useEffect(() => {
         const getMovie = async()=>{
             try{
-                console.log({item})
+               // console.log({item})
                 const res=await axios.get("/movies/find/"+item,{
                     headers: {
                       token:
@@ -44,7 +46,8 @@ export default function ListItem({index,item}){
 
                 {isHovered && (
                     <>
-                        <video className="VideoHome" src={movie.trailer} autoPlay={true} loop/>
+                    {console.log(movie.trailer)}
+                        <iframe className="VideoHome" title="Trailer" src={movie.trailer+"?autoplay=1&mute=1&autohide=1&showinfo=0&controls=0&loop=1"} frameborder="0" autoPlay={true} loop/>
                         <div className=" itemInfo">
                             <div className="icons">
                                 <PlayFill className="videoIcon"/>
