@@ -23,7 +23,6 @@ export default function List({list}){
             listRef.current.style.transform =`translateX(${distance + 230}px)`
         }
 
-        else if(direction === "right" && slideNumber < 6){
             setSlideNumber(slideNumber+1);
             listRef.current.style.transform =`translateX(${distance - 230}px)`
         }
@@ -40,9 +39,6 @@ export default function List({list}){
                         {items.map((item, index) => <li key={index}>{item.name}</li>)}
                     </ul> */}
                     {/* Index which is send ti list item */}
-                        {list.content.map((item)=>(
-                            
-                            <ListItem key={item} item={item}/>
                         ) )}
 
     
