@@ -26,7 +26,7 @@ const corsOptions ={
     optionSuccessStatus:200,
  }
  app.use(cors(corsOptions))
- app.use(cors())
+ 
 
  async function main() {
     await mongoose.connect(process.env.MONGO_URL);
