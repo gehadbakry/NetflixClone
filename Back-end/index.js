@@ -7,7 +7,8 @@ const authRoute = require("./Routes/Auth");
 const userRoute = require("./Routes/users");
 const movieRoute = require("./Routes/movies");
 const listRoute = require("./Routes/lists");
-
+const productRoute = require("./Routes/products");
+const stripeRoute = require("./routes/stripe");
 dotenv.config();
 
 //  CHECK YOUR DB CONNECTION    
@@ -25,6 +26,7 @@ const corsOptions ={
     optionSuccessStatus:200,
  }
  app.use(cors(corsOptions))
+ app.use(cors())
 
  async function main() {
     await mongoose.connect(process.env.MONGO_URL);
@@ -36,6 +38,8 @@ app.use("/api/auth", authRoute );
 app.use("/api/movies",movieRoute);
 app.use("/api/users",userRoute);
 app.use("/api/lists",listRoute);
+app.use("/api/products", productRoute);
+app.use("/api/checkout", stripeRoute);
 
 app.listen(8800,()=>{
     console.log("listening to port 8800")
