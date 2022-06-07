@@ -34,7 +34,7 @@ export default function ListItem({index,item}){
         getMovie()
     },[item]);
    
-
+    
     return(
         <Link to ={"/watch"} state = {{movie:movie}} >
             <div className="listItem" 

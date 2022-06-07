@@ -82,7 +82,7 @@ const Featued = ({type,setGenre})=>{
               {/* Controlling your movie  */}
 
               <div className="Buttons">
-              <Link to ={"/watch"} state = {{movie:content}} class="text-decoration-none">
+              <Link to ={"/watch"} state = {{movie:content}} className="text-decoration-none">
                 <button className="play">
                   <PlayCircleFill/>
                   <span>Play</span>
