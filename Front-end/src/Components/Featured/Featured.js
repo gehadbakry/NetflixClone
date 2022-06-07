@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { InfoCircle,PlayCircleFill } from 'react-bootstrap-icons'
 import {  DropdownButton,Dropdown } from 'react-bootstrap';
 import axios from "axios";
+import {Link} from 'react-router-dom'
 
 const Featued = ({type,setGenre})=>{
     const [content,setContent] = useState({});
@@ -81,24 +82,23 @@ const Featued = ({type,setGenre})=>{
               {/* Controlling your movie  */}
 
               <div className="Buttons">
-<<<<<<< HEAD
               <Link to ={"/watch"} state = {{movie:content}} className="text-decoration-none">
-=======
->>>>>>> parent of fd1cda1 (Watch Update)
                 <button className="play">
-                <PlayCircleFill/>
-              
-                <span>Play</span>
+                  <PlayCircleFill/>
+                  <span>Play</span>
                 </button>
-                <button className="more">
+              </Link>
+              <button className="more">
                 <InfoCircle/>
                 <span>More</span>
-                </button>
+              </button>
+              
               </div>
+              
             </div>
         </div>
            
-        
+
     )
 }
 export default Featued;
