@@ -47,7 +47,7 @@ return(
             alt=""
           />
           <DropdownButton  id="dropdown-button-example1 icon" variant="secondary" title="" >
-            <Dropdown.Item >Settings</Dropdown.Item>
+            <Dropdown.Item ><NavLink to="/pay">Payment plan</NavLink></Dropdown.Item>
             <Dropdown.Item ><span onClick={() => dispatch(logout())}>Logout</span></Dropdown.Item>
             </DropdownButton>
            
