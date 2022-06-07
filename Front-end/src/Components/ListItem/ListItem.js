@@ -48,7 +48,11 @@ export default function ListItem({index,item}){
                 {isHovered && (
                     <>
                     {console.log(movie.trailer)}
+<<<<<<< Updated upstream
                         <iframe className="VideoHome" title="Trailer" src={movie.trailer+"?autoplay=1&mute=1&modestbranding=1&autohide=1&showinfo=0&controls=0&loop=1&showinfo=0&frameborder=0"} />
+=======
+                        <iframe className="VideoHome" title="Trailer" src={movie.trailer+"?autoplay=1&mute=1&autohide=1&showinfo=0&controls=0&loop=1&showinfo=0"} frameborder="0" autoPlay={true} loop/>
+>>>>>>> Stashed changes
                         <div className=" itemInfo">
                             <div className="icons">
                                 <PlayFill className="videoIcon"/>
