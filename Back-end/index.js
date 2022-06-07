@@ -25,10 +25,6 @@ const corsOptions ={
     optionSuccessStatus:200,
  }
  app.use(cors(corsOptions))
-<<<<<<< HEAD
- 
-=======
->>>>>>> parent of e99b8c0 (PaymentyFirstTry)
 
  async function main() {
     await mongoose.connect(process.env.MONGO_URL);
