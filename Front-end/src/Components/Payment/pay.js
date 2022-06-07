@@ -33,6 +33,7 @@ const Pay =()=>{
         stripeKey = "pk_test_51L7k6IFiFH4fD97dgsiKzVLxL2yNRA8LIE11phV7wX38kaGafAkw9TM7x5uFjPZswlKertg6iEbAvhJsy4tFcpP400rlNV1Afb"
         >
 
+
         <button>
             <NavLink to="/home" >
             Basic plan
