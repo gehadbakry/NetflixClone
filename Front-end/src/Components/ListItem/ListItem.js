@@ -11,7 +11,7 @@ export default function ListItem({index,item}){
     const [isHovered,setIsHovered] =useState(false)
     const [movie,setMovie] =useState({})
 
-  //  console.log(item)
+    //console.log(item)
    // const trailer = "../";
     useEffect(() => {
         const getMovie = async()=>{
@@ -25,7 +25,7 @@ export default function ListItem({index,item}){
                   }
                 )
                 setMovie(res.data);
-               
+              // console.log(res.data)
             }catch(err){
                 console.log(err)
             }
@@ -33,9 +33,10 @@ export default function ListItem({index,item}){
         };
         getMovie()
     },[item]);
-   
-    
+
+
     return(
+        
         <Link to ={"/watch"} state = {{movie:movie}} >
             <div className="listItem" 
             style={{left:isHovered && index *225 -50 +index *2.5}}

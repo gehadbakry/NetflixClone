@@ -12,7 +12,7 @@ import Watch from './Pages/watch/Watch';
 import Login from './Pages/login/Login';
 import { useContext } from 'react';
 import { AuthContext } from './Context/AuthContext';
-import Pay from './Components/payment/pay';
+import Pay from './Components/Payment/pay';
 
 
 
