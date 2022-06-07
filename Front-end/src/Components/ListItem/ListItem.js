@@ -5,7 +5,6 @@ import video from '../../Marvel.mp4'
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-
 export default function ListItem({index,item}){
 
     const [isHovered,setIsHovered] =useState(false)
@@ -36,7 +35,7 @@ export default function ListItem({index,item}){
    
     
     return(
-        <Link to ={"/watch"} state = {{movie:movie}} >
+        <Link to={{pathname: "/watch",movie:movie}}>
             <div className="listItem" 
             style={{left:isHovered && index *225 -50 +index *2.5}}
             onMouseEnter={()=>setIsHovered(true)} 
@@ -48,7 +47,7 @@ export default function ListItem({index,item}){
                 {isHovered && (
                     <>
                     {console.log(movie.trailer)}
-                        <iframe className="VideoHome" title="Trailer" src={movie.trailer+"?autoplay=1&mute=1&modestbranding=1&autohide=1&showinfo=0&controls=0&loop=1&showinfo=0&frameborder=0"} />
+                        <iframe className="VideoHome" title="Trailer" src={movie.trailer+"?autoplay=1&mute=1&autohide=1&showinfo=0&controls=0&loop=1"} frameborder="0" autoPlay={true} loop/>
                         <div className=" itemInfo">
                             <div className="icons">
                                 <PlayFill className="videoIcon"/>
@@ -69,6 +68,7 @@ export default function ListItem({index,item}){
                     </>
                 )}
             </div>
-        </Link>
+
+       </Link>
     )
 }
