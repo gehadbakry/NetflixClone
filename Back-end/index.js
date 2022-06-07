@@ -7,12 +7,7 @@ const authRoute = require("./Routes/Auth");
 const userRoute = require("./Routes/users");
 const movieRoute = require("./Routes/movies");
 const listRoute = require("./Routes/lists");
-<<<<<<< Updated upstream
 
-=======
-const productRoute = require("./Routes/products");
-const stripeRoute = require("./Routes/stripe");
->>>>>>> Stashed changes
 dotenv.config();
 
 //  CHECK YOUR DB CONNECTION    

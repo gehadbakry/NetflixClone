@@ -20,21 +20,19 @@ function App() {
   return (
     <Router>
       <Routes>
-      {/* <Route exact path="/" element={user?<Home/>:<Register/>}/>
+      <Route exact path="/" element={user?<Home/>:<Register/>}/>
       <Route path="/register" element={!user?<Register/>:<Home/>}/>
       <Route path="/login" element={!user?<Login/>:<Home/>}/>
       {user && (
-          <> */}
-          <Route path="/" element={<Home/>}/>
-
+          <>
           <Route path="/movies" element={<Home type="movie"/>}/>
 
           <Route path="/Series" element={<Home type="series"/>}/>
 
           <Route path="/watch" element={<Watch/>}/>
 
-        {/* </>
-          )} */}
+        </>
+          )}
       </Routes>
     </Router>
       // <Router>

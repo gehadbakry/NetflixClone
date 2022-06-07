@@ -20,9 +20,8 @@ const Home =({type})=>{
             }`,
             {
               headers: {
-                token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTI3ZGM4MmY3YWUwYjJiZmM0MjJhMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NDU1NTYxNiwiZXhwIjoxNjU0OTg3NjE2fQ.bxJuemVeiEWu5G1ReETSjt5axNsm_XfUTH16k1mYlYY"
-                 
-                // "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+                token:
+                "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
               },
             }
           );
